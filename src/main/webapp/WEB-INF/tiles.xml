@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="main" template="/WEB_INF/main/main.jsp">
+		<put-attribute name="header" value="/WEB_INF/main/header.jsp"/>		
+		<put-attribute name="nav" value="/WEB_INF/main/nav.jsp"/>		
+		<put-attribute name="body" value="/WEB_INF/main/body.jsp"/>		
+		<put-attribute name="footer" value="/WEB_INF/main/footer.jsp"/>		
+	</definition>
+	<!-- <definition name="board" extends="main">
+		<put-attribute name="body" value="/WEB_INF/board/board.jsp"/>
+	</definition>
+	<definition name="notice" extends="main">
+		<put-attribute name="body" value="/WEB_INF/notice/notice.jsp"/>
+	</definition> 이렇게 만들면 불편하다.-->
+	
+	<definition name="*" extends="main"> 
+		<put-attribute name="body" value="/WEB_INF/{1}.jsp"/><!-- Controller에서 {1}을 보내준다. -->
+	</definition>
+	<definition name="*/*" extends="main"> <!-- */*이면 누가 들어올지 모른다. extends는 상속-->
+		<put-attribute name="body" value="/WEB_INF/{1}/{2}.jsp"/><!-- {1}이 앞에별 {2}가 뒤에 별 -->
+	</definition>
+	<definition name="*/*/*" extends="main"> 
+		<put-attribute name="body" value="/WEB_INF/{1}/{2}/{3}.jsp"/>
+	</definition>
+</tiles-definitions>
